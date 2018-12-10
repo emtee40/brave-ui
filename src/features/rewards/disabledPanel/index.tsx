@@ -29,10 +29,10 @@ export default class DisabledPanel extends React.PureComponent<Props, {}> {
       <StyledWrapper data-test-id={testId}>
         <StyledTitleWrapper>
           <StyledTitle>
-            {getLocale('disabledPanelTitle')}
+            {isPrivate ? getLocale('disabledPanelTitle2') : getLocale('disabledPanelTitle1')}
           </StyledTitle>
           <StyledOff>
-            {getLocale('disabledPanelOff')}
+            {isPrivate ? null : getLocale('disabledPanelOff')}
           </StyledOff>
         </StyledTitleWrapper>
         <StyledText>

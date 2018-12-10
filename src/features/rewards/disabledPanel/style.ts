@@ -7,28 +7,28 @@ import styled from 'styled-components'
 
 export const StyledWrapper = styled<{}, 'div'>('div')`
   width: 100%;
-  padding: 30px 25px 25px;
+  padding: 32px 24px 24px;
   font-family: Poppins, sans-serif;
-  background-image: linear-gradient(140deg, #392DD1 0%, #8E2995 100%);
+  background: #FFF;
 `
 
 export const StyledTitle = styled<{}, 'div'>('div')`
   font-size: 16px;
-  color: #F1F1F9;
+  color: #373843;
   font-weight: 500;
   letter-spacing: 0;
 `
 
 export const StyledOff = styled<{}, 'div'>('div')`
   font-size: 16px;
-  color: #FFFFFF;
+  color: #373843;
   font-weight: 600;
   letter-spacing: 0;
   margin-left: 3px;
 `
 
 export const StyledText = styled<{}, 'div'>('div')`
-  color: #F1F1F9;
+  color: #9D9DB4;
   font-size: 14px;
   font-family: Muli,sans-serif;
   letter-spacing: 0;
@@ -42,7 +42,7 @@ export const StyledLink = styled<{}, 'a'>('a')`
   cursor: pointer;
   margin-left: 4px;
   display: inline-block;
-  color: #8D92E2;
+  color: #fb542b;
 `
 
 export const StyledTitleWrapper = styled<{}, 'div'>('div')`
