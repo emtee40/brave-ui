@@ -10,7 +10,6 @@ interface StyleProps {
 }
 
 export const StyledWrapper = styled<{}, 'div'>('div')`
-  display: block;
   width: 100%;
   height: 100%;
   position: relative;
@@ -24,7 +23,7 @@ export const StyledTransitionWrapper = styled<StyleProps, 'div'>('div')`
 
 export const StyledToggleWrapper = styled<StyleProps, 'div'>('div')`
   width: 100%;
-  display: block;
+  display: flex;
   max-height: 56px;
   padding: ${p => p.show ? '18px 30px 20px 30px' : '20px'};
   top: ${p => p.show ? 'unset' : '12px'};
@@ -38,26 +37,21 @@ export const StyledSummaryText = styled<{}, 'span'>('span')`
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.35px;
-  line-height: 22px;
 ` as any
 
 export const StyledArrowIcon = styled<StyleProps, 'span'>('span')`
-  width: 26px;
-  height: 26px;
-  display: block;
-  margin-left: 32px;
-  margin-right: -6px;
-  margin-top: ${p => p.show ? 1 : -2}px;
-  color: #696FDC;
+  width: 32px;
+  height: 32px;
+  color: #4C54D2;
 ` as any
 
 export const StyledGrid = styled<{}, 'div'>('div')`
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
 `
 
 export const StyledColumn = styled<StyleProps, 'div'>('div')`
-  flex: ${p => p.size} 0 0;
+  display: flex;
 `

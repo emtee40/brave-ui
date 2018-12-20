@@ -3,6 +3,7 @@ import styled, { StyledComponentClass } from 'styled-components'
 import ArrowIcon from './arrow'
 import CaratIcon from './carat'
 import CaratCircleIcon from './carat-circle'
+import CaratCircleStrokeIcon from './carat-circle-o'
 
 // rotated variants
 function RotatedIconComponent (iconComponent: StyledComponentClass<any, any>, degrees: number) {
@@ -19,7 +20,13 @@ export const ArrowRightIcon = RotatedIconComponent(ArrowIcon, 180)
 export const ArrowDownIcon = RotatedIconComponent(ArrowIcon, -90)
 export const ArrowUpIcon = RotatedIconComponent(ArrowIcon, 90)
 export const CaratCircleUpIcon = RotatedIconComponent(CaratCircleIcon, 0)
+export const CaratCircleRightIcon = RotatedIconComponent(CaratCircleIcon, 90)
+export const CaratCircleLeftIcon = RotatedIconComponent(CaratCircleIcon, -90)
 export const CaratCircleDownIcon = RotatedIconComponent(CaratCircleIcon, 180)
+export const CaratCircleStrokeUpIcon = RotatedIconComponent(CaratCircleStrokeIcon, 0)
+export const CaratCircleStrokeRightIcon = RotatedIconComponent(CaratCircleStrokeIcon, 90)
+export const CaratCircleStrokeLeftIcon = RotatedIconComponent(CaratCircleStrokeIcon, -90)
+export const CaratCircleStrokeDownIcon = RotatedIconComponent(CaratCircleStrokeIcon, 180)
 export const CaratRightIcon = RotatedIconComponent(CaratIcon, 180)
 export const CaratLeftIcon = RotatedIconComponent(CaratIcon, 0)
 export const CaratUpIcon = RotatedIconComponent(CaratIcon, 90)
@@ -69,12 +76,14 @@ export { default as EthereumColorIcon } from './fc-logo-ethereum'
 export { default as LitecoinColorIcon } from './fc-logo-litecoin'
 export { default as LoaderIcon } from './loader'
 export { default as PaperAirplaneIcon } from './paper-airplane'
+export { default as RewardsActivateIcon } from './fc-rewards-activate'
+export { default as RewardsMegaphoneIcon } from './fc-rewards-megaphone'
+export { default as RewardsSendTipsIcon } from './fc-rewards-send-tips'
 export { default as TorLockIcon } from './tor-lock'
 export { default as TwitchColorIcon } from './fc-logo-twitch'
 export { default as TwitterColorIcon } from './fc-logo-twitter'
 export { default as UpholdColorIcon } from './fc-logo-uphold'
 export { default as YoutubeColorIcon } from './fc-logo-youtube'
-export { default as SendTipsIcon } from './send-tips'
 
 // illustrative
 export { default as GiftIcon } from './illustrative/gift'
