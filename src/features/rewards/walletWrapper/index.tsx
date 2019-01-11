@@ -80,11 +80,11 @@ export interface ActionWallet {
   action: () => void
 }
 
-export type NotificationType = 'ads' | 'backupWallet' | 'contribute' | 'grant' | 'insufficientFunds' | 'error' | ''
+export type NotificationType = 'ads' | 'ads-launch' | 'backupWallet' | 'contribute' | 'grant' | 'insufficientFunds' | 'error' | ''
 
 export interface Notification {
   id: string
-  date: string
+  date?: string
   type: NotificationType
   text: React.ReactNode
   onCloseNotification: (id: string) => void
@@ -109,7 +109,7 @@ export interface Props {
   gradientTop?: string
   isMobile?: boolean
   notification?: Notification
-  onFetchCaptcha?: () => void
+  onNotificationClick?: () => void
   onGrantHide?: () => void
   onFinish?: () => void
   onSolution?: (x: number, y: number) => void
@@ -141,9 +141,9 @@ export default class WalletWrapper extends React.PureComponent<Props, State> {
     })
   }
 
-  onFetchCaptcha = () => {
-    if (this.props.onFetchCaptcha) {
-      this.props.onFetchCaptcha()
+  onNotificationClick = () => {
+    if (this.props.onNotificationClick) {
+      this.props.onNotificationClick()
     }
   }
 
@@ -244,6 +244,30 @@ export default class WalletWrapper extends React.PureComponent<Props, State> {
     )
   }
 
+  getNotificationButton = (type: NotificationType, onClose: any) => {
+    let buttonText = 'OK'
+    let buttonAction = this.onNotificationClick
+
+    switch (type) {
+      case 'grant':
+        buttonText = getLocale('claim')
+        break
+      case 'ads-launch':
+        buttonText = getLocale('turnOnAds')
+        break
+    }
+
+    return (
+      <Button
+        size={'small'}
+        type={'accent'}
+        level={'primary'}
+        onClick={buttonAction}
+        text={buttonText}
+      />
+    )
+  }
+
   generateNotification = (notification: Notification | undefined) => {
     if (!notification) {
       return null
@@ -260,23 +284,7 @@ export default class WalletWrapper extends React.PureComponent<Props, State> {
           {this.getNotificationIcon(notification)}
           {this.getNotificationMessage(notification)}
           <StyledButton>
-            {
-              notification.type === 'grant'
-              ? <Button
-                size={'small'}
-                type={'accent'}
-                level={'primary'}
-                onClick={this.onFetchCaptcha}
-                text={getLocale('claim')}
-              />
-              : <Button
-                size={'small'}
-                type={'accent'}
-                level={'primary'}
-                onClick={onClose}
-                text={'OK'}
-              />
-            }
+            {this.getNotificationButton(notification.type, onClose)}
           </StyledButton>
         </StyledNotificationContent>
       </>
@@ -296,6 +304,7 @@ export default class WalletWrapper extends React.PureComponent<Props, State> {
 
     switch (notification.type) {
       case 'ads':
+      case 'ads-launch':
       case 'backupWallet':
         icon = megaphoneIconUrl
         break
@@ -329,6 +338,9 @@ export default class WalletWrapper extends React.PureComponent<Props, State> {
       case 'ads':
         typeText = getLocale('braveAdsTitle')
         break
+      case 'ads-launch':
+        typeText = getLocale('braveAdsLaunchTitle')
+        break
       case 'backupWallet':
         typeText = getLocale('backupWalletTitle')
         break
@@ -350,7 +362,11 @@ export default class WalletWrapper extends React.PureComponent<Props, State> {
       <StyledNotificationMessage>
         <StyledTypeText>{typeText}</StyledTypeText> <StyledPipe>|</StyledPipe>
         <StyledMessageText>{notification.text}</StyledMessageText>
-        <StyledDateText>{notification.date}</StyledDateText>
+        {
+          notification.date
+          ? <StyledDateText>{notification.date}</StyledDateText>
+          : null
+        }
       </StyledNotificationMessage>
     )
   }
